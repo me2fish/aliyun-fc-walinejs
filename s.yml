@@ -3,7 +3,7 @@ name: Waline
 access: default
 
 vars:
-  region: cn-beijing
+  region: ${env(REGION)}
   service:
     name: Waline
     description: 'A Simple, Safe Comment System inspired by Valine'
@@ -22,7 +22,7 @@ services:
         name: ${vars.service.name}
         description: ${vars.service.description}
         runtime: nodejs14
-        ossBucket: waline
+        ossBucket: ${env(OSS_BUCKET)}
         codeUri: ./
         handler: index.handler
         memorySize: 256
